@@ -5,11 +5,7 @@ using System.Text;
 
 namespace MTCG
 {
-    public abstract class MonsterCard : ICard
-    {
-    }
-
-    public abstract class SpellCard : ICard
+    public class TradeCenter
     {
     }
 }
