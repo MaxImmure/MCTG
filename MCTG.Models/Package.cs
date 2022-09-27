@@ -7,8 +7,9 @@
 //-----------------------------------------------------------------------
 
 using MTCG.Exceptions;
+using MTCG.Models;
 
-namespace MTCG
+namespace MTCG.DAL
 {
 
     public static class Package
@@ -18,7 +19,7 @@ namespace MTCG
         public static ICard[] PurchasePackage(User customer)
         {
             if (customer == null) throw new UserNotFoundException(message: $"User not found (User equals {null}!)");
-            if (customer.Coins < PRICE) 
+            if (customer.Coins < PRICE)
                 throw new NotEnoughCoinsException(message: $"User {customer.Name} has not enough Coins! ({customer.Coins})");
 
             //ToDo generate 5 random Cards

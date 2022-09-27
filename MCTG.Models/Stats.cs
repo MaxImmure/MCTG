@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace MTCG
+namespace MTCG.Models
 {
     public struct Stats
     {
@@ -12,6 +12,6 @@ namespace MTCG
         public int wins = 0;
         public int looeses = 0;
 
-        public Stats() {}
+        public Stats() { }
     }
 }

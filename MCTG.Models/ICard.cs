@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace MTCG.Cards.MonsterCards
+namespace MTCG.Models
 {
-    public class MonsterCard : ICard
+    public interface ICard
     {
     }
 }

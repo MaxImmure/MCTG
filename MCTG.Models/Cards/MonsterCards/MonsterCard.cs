@@ -2,10 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using MTCG.Models;
 
-namespace MTCG
+namespace MTCG.Cards.MonsterCards
 {
-    public interface ICard
+    public class MonsterCard : ICard
     {
     }
 }
