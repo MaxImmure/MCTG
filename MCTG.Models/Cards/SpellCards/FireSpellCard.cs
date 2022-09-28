@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MTCG.Cards.SpellCards
+namespace MCTG.Models.Cards.SpellCards
 {
     public class FireSpellCard : SpellCard
     {

@@ -2,11 +2,12 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using MTCG.Models;
+using System.Threading.Tasks;
 
-namespace MTCG.Cards.MonsterCards
+namespace MCTG.Models.Cards.MonsterCards
 {
-    public class MonsterCard : ICard
+    public abstract class MonsterCard : ICard
     {
+        public abstract double damageModyfier(ICard opponentCard);
     }
 }

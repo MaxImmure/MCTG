@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace MTCG.Models
+namespace MCTG.Models
 {
     public class User
     {

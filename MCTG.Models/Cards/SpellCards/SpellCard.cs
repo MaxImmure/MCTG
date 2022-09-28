@@ -3,11 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using MTCG.Models;
+using MCTG.Models;
 
-namespace MTCG.Cards.SpellCards
+namespace MCTG.Models.Cards.SpellCards
 {
-    public class SpellCard : ICard
+    public abstract class SpellCard : ICard
     {
+        public abstract double damageModyfier(ICard opponentCard);
     }
 }

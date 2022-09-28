@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MCTG.Models.Cards.SpellCards
+namespace MCTG.DAL
 {
-    public class WaterSpellCard : SpellCard
+    public class Scoreboard
     {
     }
 }

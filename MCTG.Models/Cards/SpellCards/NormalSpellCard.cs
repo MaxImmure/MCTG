@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace MCTG.Models.Cards.SpellCards
 {
-    public class WaterSpellCard : SpellCard
+    public class NormalSpellCard : SpellCard
     {
     }
 }

@@ -6,10 +6,10 @@
 // <summary>Represents a Package of Cards</summary>
 //-----------------------------------------------------------------------
 
-using MTCG.Exceptions;
-using MTCG.Models;
+using MCTG.Exceptions;
+using MCTG.Models;
 
-namespace MTCG.DAL
+namespace MCTG.DAL
 {
 
     public static class Package
