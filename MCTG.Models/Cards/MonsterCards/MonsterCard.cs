@@ -8,6 +8,6 @@ namespace MCTG.Models.Cards.MonsterCards
 {
     public abstract class MonsterCard : ICard
     {
-        public abstract double damageModyfier(ICard opponentCard);
+        public abstract double DamageModifier(ICard opponentCard);
     }
 }

@@ -8,5 +8,6 @@ namespace MCTG.DAL
 {
     public class Scoreboard
     {
+        //ToDo implement as View
     }
 }

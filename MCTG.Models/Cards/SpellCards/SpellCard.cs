@@ -9,6 +9,12 @@ namespace MCTG.Models.Cards.SpellCards
 {
     public abstract class SpellCard : ICard
     {
-        public abstract double damageModyfier(ICard opponentCard);
+        public double BaseDamage { get; private set; }
+        public virtual double DamageModifier(ICard opponentCard) { return 1; }
+
+        public double AttackingDamage(ICard oppoenendCard)
+        {
+            return BaseDamage * DamageModifier(oppoenendCard); 
+        }
     }
 }

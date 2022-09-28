@@ -9,7 +9,7 @@ namespace MCTG.Models.Cards.MonsterCards
 {
     public class FireMonsterCard : MonsterCard
     {
-        public override double damageModyfier(ICard opponentCard)
+        public override double DamageModifier(ICard opponentCard)
         {
             if (opponentCard == null) throw new ArgumentNullException("Card doesnt exists");
             if (opponentCard is WaterSpellCard) return 0.5;

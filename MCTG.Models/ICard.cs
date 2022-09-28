@@ -7,6 +7,6 @@ namespace MCTG.Models
 {
     public interface ICard
     {
-        abstract virtual double damageModyfier(ICard opponentCard);
+        abstract double DamageModifier(ICard opponentCard);
     }
 }
