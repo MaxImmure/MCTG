@@ -6,8 +6,9 @@
 // <summary>Represents a Package of Cards</summary>
 //-----------------------------------------------------------------------
 
-using MCTG.Exceptions;
+using MCTG.BL;
 using MCTG.Models;
+using MCTG.Models.Cards;
 
 namespace MCTG.DAL
 {
