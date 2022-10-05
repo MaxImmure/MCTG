@@ -20,8 +20,6 @@ namespace MCTG.Test
 
             // Assert
             //Assert.AreEqual(x, res);
-
-            Assert.Pass();
         }
     }
 }
