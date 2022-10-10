@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MCTG.Models.Cards.MonsterCards.Goblin
+namespace MCTG.Models.Cards.MonsterCards
 {
     public class WaterKrakenCard : WaterMonsterCard
     {

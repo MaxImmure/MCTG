@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace MCTG.Models.Cards.MonsterCards
 {
-    public class FireMonsterCard : MonsterCard
+    public abstract class FireMonsterCard : MonsterCard
     {
         public override double DamageModifier(ICard opponentCard)
         {

@@ -6,7 +6,7 @@ using System.Text;
 
 namespace MCTG.Models.Cards.MonsterCards
 {
-    public class NormalMonsterCard : MonsterCard
+    public abstract class NormalMonsterCard : MonsterCard
     {
         public override double DamageModifier(ICard opponentCard)
         {

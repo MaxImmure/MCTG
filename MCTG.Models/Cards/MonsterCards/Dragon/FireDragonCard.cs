@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MCTG.Models.Cards.MonsterCards.Goblin
+namespace MCTG.Models.Cards.MonsterCards
 {
-    public abstract class FireDragonCard : FireMonsterCard
+    public class FireDragonCard : FireMonsterCard
     {
         protected override double getDamageForSpecialities(ICard opponent)
         {
