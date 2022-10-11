@@ -11,4 +11,8 @@
     <Folder Include="Objects\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\MCTG.Models\MCTG.Models.csproj" />
+  </ItemGroup>
+
 </Project>
