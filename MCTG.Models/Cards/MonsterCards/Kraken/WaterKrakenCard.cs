@@ -7,14 +7,15 @@ using System.Threading.Tasks;
 
 namespace MCTG.Models.Cards.MonsterCards
 {
-    public abstract class FireMonsterCard : MonsterCard
+    public class WaterKrakenCard : WaterMonsterCard
     {
+        protected override double getDamageForSpecialities(ICard opponentCard)
+        {
+            return base.getDamageForSpecialities(opponentCard);
+        }
         public override double DamageModifier(ICard opponentCard)
         {
-            if (opponentCard == null) throw new ArgumentNullException("Card doesnt exists");
-            if (opponentCard is WaterSpellCard) return 0.5;
-            if (opponentCard is NormalSpellCard) return 2;
-            return 1;
+            return base.DamageModifier(opponentCard);
         }
     }
 }

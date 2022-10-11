@@ -3,9 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace MTCG.Models
+namespace MCTG.Models.Cards
 {
     public interface ICard
     {
+        public abstract double DamageModifier(ICard opponentCard);
     }
 }
