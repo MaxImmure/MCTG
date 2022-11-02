@@ -11,6 +11,7 @@ namespace MCTG.BL
 {
     public class UserHandler
     {
+        /*
         public void RegisterUser(User newUser)
         {
             var dal = new DataLayerPostgres();
@@ -22,5 +23,6 @@ namespace MCTG.BL
             var dal = new DataLayerPostgres();
             dal.DeleteUser(userToDelete);
         }
+        */
     }
 }

@@ -6,21 +6,18 @@ using System.Threading.Tasks;
 
 namespace MCTG.Models.Cards.MonsterCards
 {
-    public class WaterOrkCard : WaterMonsterCard
+    public class WaterTrollCard : WaterMonsterCard
     {
-        public WaterOrkCard(double BaseDmg) : base(BaseDmg)
+        public WaterTrollCard(double BaseDmg) : base(BaseDmg)
         { }
         protected override double getDamageForSpecialities(ICard opponent)
         {
-            if (opponent is FireWizzardCard
-                || opponent is WaterWizzardCard
-                || opponent is NormalWizzardCard)
-                return 0;
-            return 1;
+            return base.getDamageForSpecialities(opponent);
         }
         public override double DamageModifier(ICard opponentCard)
         {
             return base.DamageModifier(opponentCard);
         }
+
     }
 }

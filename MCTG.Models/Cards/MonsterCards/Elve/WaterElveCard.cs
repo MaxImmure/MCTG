@@ -8,6 +8,8 @@ namespace MCTG.Models.Cards.MonsterCards
 {
     public class WaterElveCard : WaterMonsterCard
     {
+        public WaterElveCard(double BaseDmg) : base(BaseDmg)
+        { }
         protected override double getDamageForSpecialities(ICard opponent)
         {
             return 1;

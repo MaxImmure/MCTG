@@ -9,6 +9,10 @@ namespace MCTG.Models.Cards.MonsterCards
 {
     public abstract class FireMonsterCard : MonsterCard
     {
+
+        public FireMonsterCard(double BaseDmg) : base(BaseDmg)
+        { }
+
         public override double DamageModifier(ICard opponentCard)
         {
             if (opponentCard == null) throw new ArgumentNullException("Card doesnt exists");

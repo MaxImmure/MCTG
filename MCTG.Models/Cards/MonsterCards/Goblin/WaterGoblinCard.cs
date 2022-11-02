@@ -8,6 +8,8 @@ namespace MCTG.Models.Cards.MonsterCards
 {
     public class WaterGoblinCard : WaterMonsterCard
     {
+        public WaterGoblinCard(double BaseDmg) : base(BaseDmg)
+        { }
         protected override double getDamageForSpecialities(ICard opponent)
         {
             if (opponent is FireDragonCard

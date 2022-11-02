@@ -8,6 +8,8 @@ namespace MCTG.Models.Cards.MonsterCards
 {
     public class NormalKrakenCard : NormalMonsterCard
     {
+        public NormalKrakenCard(double BaseDmg) : base(BaseDmg)
+        { }
         protected override double getDamageForSpecialities(ICard opponent)
         {
             return base.getDamageForSpecialities(opponent);

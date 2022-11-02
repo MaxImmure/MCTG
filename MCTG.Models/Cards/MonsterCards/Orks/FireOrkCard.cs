@@ -8,6 +8,8 @@ namespace MCTG.Models.Cards.MonsterCards
 {
     public class FireOrkCard : FireMonsterCard
     {
+        public FireOrkCard(double BaseDmg) : base(BaseDmg)
+        { }
         protected override double getDamageForSpecialities(ICard opponent)
         {
             if (opponent is FireWizzardCard

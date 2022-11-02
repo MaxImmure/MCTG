@@ -8,7 +8,7 @@ namespace MCTG.DAL
 {
     public class DataLayerPostgres
     {
-        public void CreateUser(User newUser)
+        /*public void CreateUser(User newUser)
         {
             throw new NotImplementedException();
         }
@@ -16,6 +16,7 @@ namespace MCTG.DAL
         public void DeleteUser(User userToDelete)
         {
             throw new NotImplementedException();
-        }
+        }*/
+
     }
 }

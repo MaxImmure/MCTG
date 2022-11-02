@@ -6,8 +6,10 @@ using System.Threading.Tasks;
 
 namespace MCTG.Models.Cards.MonsterCards
 {
-    public class NormalOrk : NormalMonsterCard
+    public class NormalOrkCard : NormalMonsterCard
     {
+        public NormalOrkCard(double BaseDmg) : base(BaseDmg)
+        { }
         protected override double getDamageForSpecialities(ICard opponent)
         {
             if (opponent is FireWizzardCard

@@ -9,6 +9,8 @@ namespace MCTG.Models.Cards.MonsterCards
 {
     public class WaterKrakenCard : WaterMonsterCard
     {
+        public WaterKrakenCard(double BaseDmg) : base(BaseDmg)
+        { }
         protected override double getDamageForSpecialities(ICard opponentCard)
         {
             return base.getDamageForSpecialities(opponentCard);

@@ -12,6 +12,11 @@ namespace MCTG.Models.Cards.MonsterCards
         
         public virtual double getDamage(ICard opponenCard) { return BaseDamage * DamageModifier(opponenCard) * getDamageForSpecialities(opponenCard); }
 
+        public MonsterCard(double baseDmg)
+        {
+            this.BaseDamage = baseDmg;
+        }
+
         public double BaseDamage { get; private set; }
         public string Name { get { return GetType().Name; } }
 
