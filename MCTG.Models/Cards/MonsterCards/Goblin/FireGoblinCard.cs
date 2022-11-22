@@ -10,9 +10,7 @@ namespace MCTG.Models.Cards.MonsterCards
     {
         protected override double getDamageForSpecialities(ICard opponent)
         {
-            if (opponent is FireDragonCard
-                || opponent is WaterDragonCard
-                || opponent is NormalDragonCard)
+            if (opponent is DragonCard)
                 return 0;
             return 1;
         }

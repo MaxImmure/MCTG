@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace MCTG.Models.Cards.MonsterCards
 {
-    public class FireElveCard : FireMonsterCard
+    public class FireElfCard : FireMonsterCard
     {
         protected override double getDamageForSpecialities(ICard opponent)
         {
