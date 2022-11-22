@@ -6,14 +6,10 @@ using System.Threading.Tasks;
 
 namespace MCTG.Models.Cards.MonsterCards
 {
-    public class FireOrkCard : FireMonsterCard
+    public class KnightCard : MonsterCard
     {
         protected override double getDamageForSpecialities(ICard opponent)
         {
-            if (opponent is FireWizzardCard
-                || opponent is WaterWizzardCard
-                || opponent is NormalWizzardCard)
-                return 0;
             return 1;
         }
         public override double DamageModifier(ICard opponentCard)

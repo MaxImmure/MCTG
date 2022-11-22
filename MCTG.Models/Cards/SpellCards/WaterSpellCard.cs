@@ -12,6 +12,8 @@ namespace MCTG.Models.Cards.SpellCards
         public override double DamageModifier(ICard opponentCard)
         {
             if (opponentCard == null) throw new ArgumentNullException("Card doesnt exists");
+            if (opponentCard is KrakenCard) return 0;
+            if (opponentCard is KnightCard) return 9999999;
             if (opponentCard is NormalSpellCard || opponentCard is NormalMonsterCard) return 0.5;
             if (opponentCard is FireSpellCard || opponentCard is FireMonsterCard) return 2;
             return 1;

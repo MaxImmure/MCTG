@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace MCTG.Models.Cards.MonsterCards
 {
-    public class WaterOrkCard : WaterMonsterCard
+    public class OrkCard : NormalMonsterCard
     {
         protected override double getDamageForSpecialities(ICard opponent)
         {

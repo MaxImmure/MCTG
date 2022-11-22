@@ -1,5 +1,4 @@
-﻿using MCTG.Models.Cards.SpellCards;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -7,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace MCTG.Models.Cards.MonsterCards
 {
-    public class WaterKrakenCard : WaterMonsterCard
+    public class NormalTrollCard : NormalMonsterCard
     {
-        protected override double getDamageForSpecialities(ICard opponentCard)
+        protected override double getDamageForSpecialities(ICard opponent)
         {
-            return base.getDamageForSpecialities(opponentCard);
+            return 1;
         }
         public override double DamageModifier(ICard opponentCard)
         {
