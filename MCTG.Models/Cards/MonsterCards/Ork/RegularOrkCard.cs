@@ -6,11 +6,13 @@ using System.Threading.Tasks;
 
 namespace MCTG.Models.Cards.MonsterCards
 {
-    public class NormalDragonCard : NormalMonsterCard
+    public class RegularOrk : RegularMonsterCard
     {
         protected override double getDamageForSpecialities(ICard opponent)
         {
-            if (opponent is FireElveCard) //ToDo can evade 
+            if (opponent is FireWizzardCard
+                || opponent is WaterWizzardCard
+                || opponent is RegularWizzardCard)
                 return 0;
             return 1;
         }
