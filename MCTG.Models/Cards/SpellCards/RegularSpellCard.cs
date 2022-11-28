@@ -1,19 +1,20 @@
-﻿using MCTG.Models.Cards.SpellCards;
+﻿using MCTG.Models.Cards.MonsterCards;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 
-namespace MCTG.Models.Cards.MonsterCards
+namespace MCTG.Models.Cards.SpellCards
 {
-    public abstract class NormalMonsterCard : MonsterCard
+    public class RegularSpellCard : SpellCard
     {
         public override double DamageModifier(ICard opponentCard)
         {
             if (opponentCard == null) throw new ArgumentNullException("Card doesnt exists");
-            //if (opponentCard is MonsterCard || opponentCard.GetType() == typeof(SpellCard)) return 1.0; //no effectiveness on only Monster fights
-            if (opponentCard is WaterSpellCard) return 2;
+            if (opponentCard is KrakenCard) return 0;
             if (opponentCard is FireSpellCard) return 0.5;
+            if (opponentCard is WaterSpellCard) return 2;
             return 1;
         }
     }

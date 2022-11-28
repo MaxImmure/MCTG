@@ -14,7 +14,7 @@ namespace MCTG.Models.Cards.SpellCards
             if (opponentCard == null) throw new ArgumentNullException("Card doesnt exists");
             if (opponentCard is KrakenCard) return 0;
             if (opponentCard is WaterSpellCard || opponentCard is WaterMonsterCard) return 0.5;
-            if (opponentCard is NormalSpellCard || opponentCard is NormalMonsterCard) return 2;
+            if (opponentCard is RegularSpellCard || opponentCard is RegularMonsterCard) return 2;
             return 1;
         }
     }

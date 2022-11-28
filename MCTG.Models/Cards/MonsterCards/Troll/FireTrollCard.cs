@@ -9,7 +9,7 @@ namespace MCTG.Models.Cards.MonsterCards
     public class FireTrollCard : FireMonsterCard
     {
         protected override double getDamageForSpecialities(ICard opponent)
-        {
+        { 
             return 1;
         }
         public override double DamageModifier(ICard opponentCard)
