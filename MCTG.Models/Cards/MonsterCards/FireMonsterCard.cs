@@ -13,7 +13,7 @@ namespace MCTG.Models.Cards.MonsterCards
         {
             if (opponentCard == null) throw new ArgumentNullException("Card doesnt exists");
             if (opponentCard is WaterSpellCard) return 0.5;
-            if (opponentCard is NormalSpellCard) return 2;
+            if (opponentCard is RegularSpellCard) return 2;
             return 1;
         }
     }

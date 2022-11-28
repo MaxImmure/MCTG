@@ -14,7 +14,7 @@ namespace MCTG.Models.Cards.MonsterCards
             if (opponentCard == null) throw new ArgumentNullException("Card doesnt exists");
             //if (opponentCard is MonsterCard || opponentCard.GetType() == typeof(SpellCard)) return 1.0; //no effectiveness on only Monster fights
             if (opponentCard is FireSpellCard) return 2;
-            if (opponentCard is NormalSpellCard) return 0.5;
+            if (opponentCard is RegularSpellCard) return 0.5;
             return 1;
         }
     }
