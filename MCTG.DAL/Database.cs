@@ -17,13 +17,15 @@ namespace MCTG.BL
 
         private Database()
         {
-            _connection = new NpgsqlConnection("Host=localhost;Username=swe1user;Password=swe1pw;Database=mctg_db"); // ToDo extract the String instead of hardcode
+            _connection = new NpgsqlConnection(
+                "Host=localhost;Username=swe1user;Password=swe1pw;Database=mctg_db"
+                ); // ToDo extract the String instead of hardcode, settings -> gitignore
             _connection.Open();
         }
 
         public static Database? Instance()
         {
-            return _instance ??= new();
+            return _instance ??= new();//late-binding
         }
 
         public bool ExecuteNonQuery(NpgsqlCommand cmd)

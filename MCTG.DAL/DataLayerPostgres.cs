@@ -12,7 +12,6 @@ namespace MCTG.DAL
 {
     public class DataLayerPostgres
     {
-        private Database _db = Database.Instance();
 
         public DataLayerPostgres()
         {
@@ -29,10 +28,11 @@ namespace MCTG.DAL
                                 ", u_description varchar(128)" +
                                 ", CHECK(coins >= 0));";
 
-            _db.ExecuteNonQuery(new NpgsqlCommand(createuser));
+            Database.Instance().ExecuteNonQuery(new NpgsqlCommand(createuser));
         }
         #endregion
 
+        //(private) User Repo Class -> Repository Pattern
         #region User
         //ToDo Add Stats to User
         public bool CreateUser(User newUser)
@@ -45,7 +45,7 @@ namespace MCTG.DAL
             cmd.Parameters.AddWithValue("p4", newUser.Coins);
             cmd.Parameters.AddWithValue("p5", newUser.Description);
 
-            if (_db.ExecuteNonQuery(cmd))
+            if (Database.Instance().ExecuteNonQuery(cmd))
             {
                 return true;
             }
@@ -59,7 +59,7 @@ namespace MCTG.DAL
             NpgsqlCommand cmd = new(sql);
             cmd.Parameters.AddWithValue("p1", uuid);
 
-            if (_db.ExecuteNonQuery(cmd))
+            if (Database.Instance().ExecuteNonQuery(cmd))
             {
                 return true;
             }
@@ -78,7 +78,7 @@ namespace MCTG.DAL
             var cmd = new NpgsqlCommand(sql);
             cmd.Parameters.AddWithValue("p1", uuid);
 
-            using (NpgsqlDataReader reader = _db.ExecuteQuery(cmd))
+            using (NpgsqlDataReader reader = Database.Instance().ExecuteQuery(cmd))
             {
 
                 if (reader.Read())
@@ -99,7 +99,7 @@ namespace MCTG.DAL
             string sql = "SELECT * FROM users";
             var cmd = new NpgsqlCommand(sql);
 
-            using (NpgsqlDataReader reader = _db.ExecuteQuery(cmd))
+            using (NpgsqlDataReader reader = Database.Instance().ExecuteQuery(cmd))
             {
                 while (reader.Read())
                 {
@@ -125,7 +125,7 @@ namespace MCTG.DAL
             cmd.Parameters.AddWithValue("p4", updatedUser.Coins);
             cmd.Parameters.AddWithValue("p5", updatedUser.Guid.ToString());
 
-            if (_db.ExecuteNonQuery(cmd))
+            if (Database.Instance().ExecuteNonQuery(cmd))
             {
                 return true;
             }
@@ -139,7 +139,7 @@ namespace MCTG.DAL
             NpgsqlCommand cmd = new(sql);
             cmd.Parameters.AddWithValue("p1", username);
 
-            using (NpgsqlDataReader reader = _db.ExecuteQuery(cmd))
+            using (NpgsqlDataReader reader = Database.Instance().ExecuteQuery(cmd))
             {
 
                 if (reader.Read())
@@ -151,8 +151,6 @@ namespace MCTG.DAL
         }
 
         #endregion
-
-
 
     }
 }

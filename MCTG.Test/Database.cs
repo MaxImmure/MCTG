@@ -18,19 +18,25 @@ namespace MCTG.Test
             dal = new();
         }
 
+        //selbe DB? -> MOcking
         [Test]
-        public void CreateAndDeleteUser() //TestMax_ShouldBeXWhenXGreaterY()
+        public void CreateAndDeleteUser()
         {
             User aUser = new User(Guid.NewGuid(), "Test1", "*****", 100, "");
             User cUser = new User(Guid.NewGuid(), "Test3", "*****", 100, "");
 
-            dal.CreateUser(aUser);
-
-            Assert.That(dal.FindUserByName("Test1").Equals(aUser));
-            Assert.IsNull(dal.FindUserByName(cUser.Username));
-            Assert.NotNull(dal.FindUserByName(aUser.Username));
-            dal.DeleteUser(aUser);
-            Assert.IsNull(dal.FindUserByName(aUser.Username));
+            try
+            {
+                dal.CreateUser(aUser);
+                Assert.That(dal.FindUserByName("Test1").Equals(aUser));
+                Assert.IsNull(dal.FindUserByName(cUser.Username));
+                Assert.NotNull(dal.FindUserByName(aUser.Username));
+            }
+            finally
+            {
+                dal.DeleteUser(aUser);//-> TryToDeleteUser
+                Assert.IsNull(dal.FindUserByName(aUser.Username));
+            }
         }
 
         [Test]
