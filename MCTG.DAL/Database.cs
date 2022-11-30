@@ -19,7 +19,7 @@ namespace MCTG.BL
         {
             _connection = new NpgsqlConnection(
                 "Host=localhost;Username=swe1user;Password=swe1pw;Database=mctg_db"
-                ); // ToDo extract the String instead of hardcode, settings -> gitignore
+                ); // ToDo extract the String instead of hardcode, settings -> gitignore Environment value
             _connection.Open();
         }
 
