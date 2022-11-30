@@ -18,5 +18,9 @@ namespace MCTG.Models.Cards.MonsterCards
         {
             return base.DamageModifier(opponentCard);
         }
+
+        public WaterGoblinCard(double baseDamage) : base(baseDamage)
+        {
+        }
     }
 }

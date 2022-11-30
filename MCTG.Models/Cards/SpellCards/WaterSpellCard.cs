@@ -9,6 +9,10 @@ namespace MCTG.Models.Cards.SpellCards
 {
     public class WaterSpellCard : SpellCard
     {
+        public WaterSpellCard(double baseDamage) : base(baseDamage)
+        {
+        }
+
         public override double DamageModifier(ICard opponentCard)
         {
             if (opponentCard == null) throw new ArgumentNullException("Card doesnt exists");

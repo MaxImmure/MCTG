@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace MCTG.Models.Cards.MonsterCards
 {
-    public class RegularElveCard : RegularMonsterCard
+    public class RegularElfCard : RegularMonsterCard
     {
         protected override double getDamageForSpecialities(ICard opponent)
         {
@@ -15,6 +15,10 @@ namespace MCTG.Models.Cards.MonsterCards
         public override double DamageModifier(ICard opponentCard)
         {
             return base.DamageModifier(opponentCard);
+        }
+
+        public RegularElfCard(double baseDamage) : base(baseDamage)
+        {
         }
     }
 }

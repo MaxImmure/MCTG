@@ -16,5 +16,9 @@ namespace MCTG.Models.Cards.MonsterCards
         {
             return base.DamageModifier(opponentCard);
         }
+
+        public RegularWizzardCard(double baseDamage) : base(baseDamage)
+        {
+        }
     }
 }

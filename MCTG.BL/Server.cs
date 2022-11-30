@@ -9,31 +9,36 @@ using MCTG.Models;
 
 namespace MCTG.BL
 {
-    internal class Server
+    public class Server
     {
-        private TcpListener httpListener;
+        public IPAddress host { get; }
+        public int port { get; }
+        private TcpListener listener;
 
-        public Server(int port)
+        public Server(int port = 10001)
         {
-            httpListener = new TcpListener(IPAddress.Loopback, port);
+            this.port = port;
+            host = IPAddress.Any;
+            listener = new TcpListener(IPAddress.Any, port);
         }
 
-        public void StartServer()
+        public void Run()
         {
-            while (true)
-            {
-                httpListener.Start();
-                Console.WriteLine($"Listening...");
+            listener.Start();
+            Console.WriteLine($"Listening...");
 
-                var socket = httpListener.AcceptTcpClient();
+            for (;;)
+            {
+                var socket = listener.AcceptTcpClient();
 
                 Task.Run(() =>
                 {
+                    //NonFunctional Sockets
                     HttpRequest request = new(socket);
                     HttpResponse response = new(socket);
                     string responseString = "Unknown request";
 
-                    string[] strParams = request.Url.Skip(1).Select(s => s.Replace("/", "")).ToArray();
+                    string[] strParams = request.UrlSegments;
 
                     if (request.HttpMethod == "GET")
                     {

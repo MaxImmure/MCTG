@@ -17,5 +17,9 @@ namespace MCTG.Models.Cards.SpellCards
             if (opponentCard is RegularSpellCard || opponentCard is RegularMonsterCard) return 2;
             return 1;
         }
+
+        public FireSpellCard(double baseDamage) : base(baseDamage)
+        {
+        }
     }
 }

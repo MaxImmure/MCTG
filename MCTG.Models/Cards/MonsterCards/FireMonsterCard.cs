@@ -16,5 +16,9 @@ namespace MCTG.Models.Cards.MonsterCards
             if (opponentCard is RegularSpellCard) return 2;
             return 1;
         }
+
+        protected FireMonsterCard(double baseDamage) : base(baseDamage)
+        {
+        }
     }
 }

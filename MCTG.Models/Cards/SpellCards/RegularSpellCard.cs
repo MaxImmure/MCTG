@@ -17,5 +17,9 @@ namespace MCTG.Models.Cards.SpellCards
             if (opponentCard is WaterSpellCard) return 2;
             return 1;
         }
+
+        public RegularSpellCard(double baseDamage) : base(baseDamage)
+        {
+        }
     }
 }

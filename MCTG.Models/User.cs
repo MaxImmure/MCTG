@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.Design.Serialization;
 using System.Linq;
 using System.Text;
 using MCTG.Models.Cards;
@@ -19,7 +20,18 @@ namespace MCTG.Models
 
         public User(Guid guid, string username, string password, int coins, string description)
         {
-            throw new NotImplementedException();
+            this.Guid = guid;
+            this.Username = username;
+            this.Password = password;
+            this.Coins = coins;
+            this.Description = description;
+        }
+
+        public bool Equals(User u)
+        {
+            return (Guid.Equals(u.Guid) && Username.Equals(u.Username) && Password.Equals(u.Password) &&
+                    Coins == u.Coins && Description.Equals(u.Description));
+            //ToDo update
         }
     }
 }

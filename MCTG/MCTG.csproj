@@ -12,7 +12,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\MCTG.Models\MCTG.Models.csproj" />
+    <ProjectReference Include="..\MCTG.BL\MCTG.BL.csproj" />
   </ItemGroup>
 
 </Project>

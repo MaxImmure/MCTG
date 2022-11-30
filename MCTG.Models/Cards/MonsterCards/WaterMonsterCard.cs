@@ -17,5 +17,9 @@ namespace MCTG.Models.Cards.MonsterCards
             if (opponentCard is RegularSpellCard) return 0.5;
             return 1;
         }
+
+        protected WaterMonsterCard(double baseDamage) : base(baseDamage)
+        {
+        }
     }
 }

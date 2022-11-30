@@ -12,9 +12,13 @@ namespace MCTG.Models.Cards.SpellCards
         public double BaseDamage { get; private set; }
         public virtual double DamageModifier(ICard opponentCard) { return 1; }
 
-        public double AttackingDamage(ICard oppoenendCard)
+        public SpellCard(double baseDamage)
         {
-            return BaseDamage * DamageModifier(oppoenendCard); 
+            this.BaseDamage = baseDamage;
+        }
+        public double getDamage(ICard opponentCard)
+        {
+            return BaseDamage * DamageModifier(opponentCard);
         }
     }
 }

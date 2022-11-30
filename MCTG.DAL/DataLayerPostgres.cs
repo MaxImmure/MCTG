@@ -14,8 +14,12 @@ namespace MCTG.DAL
     {
         private Database _db = Database.Instance();
 
-        #region Init
+        public DataLayerPostgres()
+        {
+            initDatabase();
+        }
 
+        #region Init
         private void initDatabase()
         {
             string createuser = "CREATE TABLE IF NOT EXISTS users (guid char(36) PRIMARY KEY" +
@@ -23,7 +27,6 @@ namespace MCTG.DAL
                                 ", u_password varchar(64) NOT NULL" +
                                 ", coins integer NOT NULL" +
                                 ", u_description varchar(128)" +
-                                ", elo integer NOT NULL" +
                                 ", CHECK(coins >= 0));";
 
             _db.ExecuteNonQuery(new NpgsqlCommand(createuser));
@@ -34,13 +37,13 @@ namespace MCTG.DAL
         //ToDo Add Stats to User
         public bool CreateUser(User newUser)
         {
-            string sql = "INSERT INTO users (guid, username, u_password, coins, u_description, elo) VALUES (@p1, @p2, @p3, @p4, @p5)";
+            string sql = "INSERT INTO users (guid, username, u_password, coins, u_description) VALUES (@p1, @p2, @p3, @p4, @p5)";
             NpgsqlCommand cmd = new(sql);
-            cmd.Parameters.AddWithValue("p1", newUser.Guid);
+            cmd.Parameters.AddWithValue("p1", newUser.Guid.ToString());
             cmd.Parameters.AddWithValue("p2", newUser.Username);
             cmd.Parameters.AddWithValue("p3", newUser.Password);
             cmd.Parameters.AddWithValue("p4", newUser.Coins);
-            cmd.Parameters.AddWithValue("p5", newUser.GameStats.elo);
+            cmd.Parameters.AddWithValue("p5", newUser.Description);
 
             if (_db.ExecuteNonQuery(cmd))
             {
@@ -71,7 +74,7 @@ namespace MCTG.DAL
 
         public User GetUser(string uuid)
         {
-            string sql = "SELECT username, password, coins, u_description FROM users WHERE guid=@p1";
+            string sql = "SELECT username, u_password, coins, u_description FROM users WHERE guid=@p1";
             var cmd = new NpgsqlCommand(sql);
             cmd.Parameters.AddWithValue("p1", uuid);
 
@@ -114,13 +117,13 @@ namespace MCTG.DAL
 
         public bool UpdateUser(User updatedUser)
         {
-            string sql = "UPDATE users SET guid=@p1, username=@p2, password=@p3, coins=@p4 WHERE guid=@p5";
+            string sql = "UPDATE users SET guid=@p1, username=@p2, u_password=@p3, coins=@p4 WHERE guid=@p5";
             NpgsqlCommand cmd = new(sql);
-            cmd.Parameters.AddWithValue("p1", updatedUser.Guid);
+            cmd.Parameters.AddWithValue("p1", updatedUser.Guid.ToString());
             cmd.Parameters.AddWithValue("p2", updatedUser.Username);
             cmd.Parameters.AddWithValue("p3", updatedUser.Password);
             cmd.Parameters.AddWithValue("p4", updatedUser.Coins);
-            cmd.Parameters.AddWithValue("p5", updatedUser.Guid);
+            cmd.Parameters.AddWithValue("p5", updatedUser.Guid.ToString());
 
             if (_db.ExecuteNonQuery(cmd))
             {

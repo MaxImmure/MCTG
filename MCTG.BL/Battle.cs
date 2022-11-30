@@ -29,7 +29,18 @@ namespace MCTG.DAL
             }
             return null;
         }
-        
+
+        public static ICard simulateCardFight(ICard c1, ICard c2)
+        {
+            double dmg1 = c1.getDamage(c2),
+                dmg2 = c2.getDamage(c1);
+
+            if (dmg1 > dmg2) return c1;
+            if (dmg2 > dmg1) return c2;
+
+            return EmptyCard.Instance();
+        }
+
 
         private Tuple<ICard,ICard> chooseRandomCards(ICard[] deck1, ICard deck2)
         {

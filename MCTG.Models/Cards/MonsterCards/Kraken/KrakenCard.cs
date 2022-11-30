@@ -17,5 +17,9 @@ namespace MCTG.Models.Cards.MonsterCards
         {
             return base.DamageModifier(opponentCard);
         }
+
+        public KrakenCard(double baseDamage) : base(baseDamage)
+        {
+        }
     }
 }
