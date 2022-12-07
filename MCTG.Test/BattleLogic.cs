@@ -63,7 +63,7 @@ namespace MCTG.Test
         }
 
         [Test]
-        public void TestMonsterFightBattle() //TestMax_ShouldBeXWhenXGreaterY()
+        public void TestMonsterFightBattle()
         {
             //AAA
             // Arrange
@@ -77,6 +77,47 @@ namespace MCTG.Test
             // Assert
             Assert.That(troll, Is.EqualTo(fight1));
             Assert.That(troll, Is.EqualTo(fight2));
+        }
+
+        [Test]
+        public void TestSpellFightBattle()
+        {
+            FireSpellCard fireSpell = new(10);
+            WaterSpellCard waterSpell = new(20);
+
+            FireSpellCard fireSpell1 = new (20);
+            WaterSpellCard waterSpell1 = new(5);
+
+            FireSpellCard fireSpell2 = new (90);
+
+            ICard fight1 = Battle.simulateCardFight(fireSpell, waterSpell),
+                fight2 = Battle.simulateCardFight(fireSpell1, waterSpell1),
+                fight3 = Battle.simulateCardFight(fireSpell2, waterSpell1);
+
+            Assert.That(waterSpell, Is.EqualTo(fight1));
+            Assert.That(EmptyCard.Instance(), Is.EqualTo(fight2));
+            Assert.That(fireSpell2, Is.EqualTo(fight3));
+        }
+
+        [Test]
+        public void TestMixedBattle()
+        {
+            FireSpellCard fs = new(10);
+            WaterSpellCard ws = new(10);
+            RegularSpellCard rs = new(10);
+
+            WaterGoblinCard watergoblin = new(10);
+            KnightCard knight = new(15);
+
+            ICard fight1 = Battle.simulateCardFight(fs, watergoblin),
+                fight2 = Battle.simulateCardFight(ws, watergoblin),
+                fight3 = Battle.simulateCardFight(rs, watergoblin),
+                fight4 = Battle.simulateCardFight(rs, knight);
+
+            Assert.That(watergoblin, Is.EqualTo(fight1));
+            Assert.That(EmptyCard.Instance(), Is.EqualTo(fight2));
+            Assert.That(rs, Is.EqualTo(fight3));
+            Assert.That(knight, Is.EqualTo(fight4));
         }
     }
 }
