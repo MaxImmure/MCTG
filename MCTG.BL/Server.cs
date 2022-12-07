@@ -5,7 +5,7 @@ using System.Net.Sockets;
 using System.Net;
 using System.Text;
 using System.Threading.Tasks;
-using MCTG.Models;
+using MCTG.Models.Http;
 
 namespace MCTG.BL
 {
