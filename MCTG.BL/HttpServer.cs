@@ -5,22 +5,26 @@ using System.Net.Sockets;
 using System.Net;
 using System.Text;
 using System.Threading.Tasks;
-using MCTG.Models.Http;
+using MCTG.Models.HTTP;
 
 namespace MCTG.BL
 {
-    public class Server
+    public class HttpServer
     {
         public IPAddress host { get; }
         public int port { get; }
         private TcpListener listener;
+        public Dictionary<string, IHttpEndpoint> Endpoints { get; private set; } = new();
 
-        public Server(int port = 10001)
+        public HttpServer(IPAddress host, int port = 10001)
         {
             this.port = port;
-            host = IPAddress.Any;
-            listener = new TcpListener(IPAddress.Any, port);
+            this.host = host;
+            listener = new TcpListener(host, port);
         }
+
+        public HttpServer(int port = 10001) : this(IPAddress.Any, port)
+        {}
 
         public void Run()
         {

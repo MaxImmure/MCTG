@@ -12,7 +12,7 @@ namespace MCTG
     {
         static void Main(string[] args)
         {
-            Server server = new();
+            HttpServer server = new();
             server.Run();
         }
     }
