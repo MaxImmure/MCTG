@@ -26,20 +26,24 @@ namespace MCTG.BL
         public HttpServer(int port = 10001) : this(IPAddress.Any, port)
         {}
 
+        public void RegisterEndpoint(string path, IHttpEndpoint endpoint) => Endpoints.Add(path, endpoint);
+
         public void Run()
         {
             listener.Start();
-            Console.WriteLine($"Listening...");
 
             for (;;)
             {
-                var socket = listener.AcceptTcpClient();
-
+                Console.WriteLine("Waiting for new client request...");
+                var clientSocket = listener.AcceptTcpClient();
+                var httpProcessor = new HttpProcessor(this, clientSocket);
+                Task.Factory.StartNew(() => httpProcessor.Run());
+                /*
                 Task.Run(() =>
                 {
                     //NonFunctional Sockets
-                    HttpRequest request = new(socket);
-                    HttpResponse response = new(socket);
+                    HttpRequest request = new(socket.GetStream().);
+                    HttpResponse response = new(socket.GetStream());
                     string responseString = "Unknown request";
 
                     string[] strParams = request.UrlSegments;
@@ -142,7 +146,7 @@ namespace MCTG.BL
                         }
                     }
 
-                });
+                });*/
 
             }
 

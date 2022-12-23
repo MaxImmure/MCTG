@@ -19,7 +19,7 @@ namespace MCTG.BL
             this.httpServer = httpServer;
         }
 
-        public void run()
+        public void Run()
         {
             var reader = new StreamReader(client.GetStream());
             var request = new HttpRequest(reader);
@@ -27,7 +27,8 @@ namespace MCTG.BL
             var writer = new StreamWriter(client.GetStream()) { AutoFlush = true };
             var response = new HttpResponse(writer);
 
-            var endpoint = httpServer.Endpoints[request.Path[1]];
+            IHttpEndpoint endpoint;
+            httpServer.Endpoints.TryGetValue(request.Path, out endpoint);
             if(endpoint != null)
                 endpoint.HandleRequest(request, response);
             else

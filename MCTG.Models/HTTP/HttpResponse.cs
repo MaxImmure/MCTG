@@ -16,6 +16,17 @@ namespace MCTG.Models.HTTP
 
         public Dictionary<string, string> Headers { get; set; }
         public string Content { get; set; }
+        public string ContentType
+        {
+            get
+            {
+                return Headers["Content-Type"];
+            }
+            set
+            {
+                Headers["Content-Type"] = value;
+            }
+        }
 
         public HttpResponse(StreamWriter writer)
         {
@@ -25,8 +36,8 @@ namespace MCTG.Models.HTTP
 
         public void Process()
         {
-            writer.WriteLine($"HTTP/1.1 {ResponseCode} {ResponseText}");
-            
+            writer.WriteLine($"HTTP/1.1 {ResponseCode} {ResponseText}\n");
+
             if (Content != null && Content.Length > 0)
                 Headers.Add("Content-Length", Content.Length.ToString());
 
@@ -37,6 +48,8 @@ namespace MCTG.Models.HTTP
             
             writer.Flush();
             writer.Close();
+
+            Console.WriteLine();
         }
     }
 }

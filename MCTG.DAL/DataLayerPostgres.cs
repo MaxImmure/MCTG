@@ -35,7 +35,21 @@ namespace MCTG.DAL
         //(private) User Repo Class -> Repository Pattern
         #region User
         
+        public void CreateUser(User newUser)
+        {
+            //Delete - testCases
+        }
 
+        public void DeleteUser(User user)
+        {
+            //Delete - testCases
+        }
+
+        public User GetUser(String name)
+        {
+            //Delete - testCases
+            return null;
+        }
 
 
         public List<User> GetAllUsers()

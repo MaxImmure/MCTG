@@ -14,13 +14,13 @@ namespace MCTG.BL
         public void RegisterUser(User newUser)
         {
             var dal = new DataLayerPostgres();
-            dal.CreateUser(newUser);
+            //dal.CreateUser(newUser);
         }
 
         public void UnregisterUser(User userToDelete)
         {
             var dal = new DataLayerPostgres();
-            dal.DeleteUser(userToDelete);
+            //dal.DeleteUser(userToDelete);
         }
     }
 }
