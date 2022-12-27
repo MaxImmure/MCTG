@@ -6,7 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace MCTG.DAL
+namespace MCTG.BL
 {
     public class Battle
     {

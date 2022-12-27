@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using MCTG.Models.HTTP;
 
-namespace MCTG.BL
+namespace MCTG.BL.HTTP
 {
     public class HttpServer
     {

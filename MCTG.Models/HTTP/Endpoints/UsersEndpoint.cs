@@ -33,6 +33,12 @@ namespace MCTG.Models.HTTP.Endpoints
 
                 rs.ResponseCode = 201;
                 rs.ResponseText = "OK";
+                rs.Content = "User successfully created";
+            }
+            catch (UserAlreadyExistsException)
+            {
+                rs.ResponseCode = 409;
+                rs.Content = "User with same username already registered";
             }
             catch (Exception)
             {
