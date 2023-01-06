@@ -22,6 +22,31 @@ namespace MCTG.Models.HTTP.Endpoints
                 case HttpMethod.GET:
                     GetUsers(rq, rs);
                     break;
+                case HttpMethod.PUT:
+                    UpdatesUser(rq, rs);
+                    break;
+            }
+        }
+
+        private void UpdatesUser(HttpRequest rq, HttpResponse rs)
+        {
+            throw new NotImplementedException(); //ToDo
+
+            try
+            {
+                rs.ResponseCode = 200;
+                rs.ResponseText = "OK";
+                rs.Content = "User sucessfully updated.";  
+            }
+            catch (NotValidAccessTokenException)
+            {
+                rs.ResponseCode = 401;
+                rs.Content = "Access token is missing or invalid";
+            }
+            catch (UserNotFoundException)
+            {
+                rs.ResponseCode = 404;
+                rs.Content = "User not found.";
             }
         }
 
