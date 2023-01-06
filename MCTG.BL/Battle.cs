@@ -1,5 +1,4 @@
-﻿using MCTG.Exceptions;
-using MCTG.Models;
+﻿using MCTG.Models;
 using MCTG.Models.Cards;
 using System;
 using System.Collections.Generic;

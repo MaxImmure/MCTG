@@ -7,6 +7,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.2" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\MCTG.DAL\MCTG.DAL.csproj" />
     <ProjectReference Include="..\MCTG.Models\MCTG.Models.csproj" />
   </ItemGroup>

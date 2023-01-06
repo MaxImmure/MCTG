@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Net;
 using MCTG.BL;
+using MCTG.BL.HTTP;
 using MCTG.Models.HTTP.Endpoints;
 
 namespace MCTG
