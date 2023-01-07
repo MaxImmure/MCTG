@@ -43,7 +43,7 @@ namespace MCTG.Models.HTTP.Endpoints
                 rs.ResponseCode = 401;
                 rs.Content = "Access token is missing or invalid";
             }
-            catch (UserNotFoundException)
+            catch (Exception ex)//ToDo => catch (UserNotFoundException)
             {
                 rs.ResponseCode = 404;
                 rs.Content = "User not found.";

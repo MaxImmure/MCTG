@@ -30,6 +30,7 @@ namespace MCTG.Models.Cards
             ["Empty"] = dmg => EmptyCard.Instance(),
             ["FireSpell"] = dmg => new FireSpellCard(dmg),
             ["WaterSpell"] = dmg => new WaterSpellCard(dmg),
+            ["RegularSpell"] = dmg => new RegularSpellCard(dmg),
             ["FireElf"] = dmg => new FireElfCard(dmg),
             ["WaterElf"] = dmg => new WaterElfCard(dmg),
             ["RegularElf"] = dmg => new RegularElfCard(dmg),
@@ -48,23 +49,31 @@ namespace MCTG.Models.Cards
             ["Dragon"] = dmg => new DragonCard(dmg)
         };
 
-        public static ICard GetCard(CardType type, ElementType element, string cardName, double damage)
+        public static ICard? GetCard(CardType type, ElementType element, string cardName, double damage)
         {
-            switch (type)
+            try
             {
-                case (CardType.Empty):
-                    return Cards[type.ToString()].Invoke(damage); //ToDo Test
-                case (CardType.Spell):
-                    return Cards[element.ToString() + type.ToString()].Invoke(damage);
-                case CardType.Monster:
-                    switch (element)
-                    {
-                        case ElementType.NaE:
-                            return Cards[cardName].Invoke(damage);
-                        default: return Cards[element.ToString() + cardName].Invoke(damage);
-                    }
+                switch (type)
+                {
+                    case (CardType.Empty):
+                        return Cards[type.ToString()].Invoke(damage); //ToDo Test
+                    case (CardType.Spell):
+                        if (element.Equals(ElementType.NaE)) throw new KeyNotFoundException("There is no Spell without an Element"); //ToDo change Exception
+                        return Cards[element.ToString() + type.ToString()].Invoke(damage);
+                    case CardType.Monster:
+                        switch (element)
+                        {
+                            case ElementType.NaE:
+                                return Cards[cardName].Invoke(damage);
+                            default: return Cards[element.ToString() + cardName].Invoke(damage);
+                        }
+                }
+                //ToDo
             }
-            //ToDo
+            catch (KeyNotFoundException)
+            {
+                return null;
+            }
 
             return EmptyCard.Instance();
         }

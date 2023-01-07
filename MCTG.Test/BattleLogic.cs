@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using MCTG.BL;
 using MCTG.DAL;
 using MCTG.Models;
 using MCTG.Models.Cards.MonsterCards;
@@ -28,7 +29,7 @@ namespace MCTG.Test
         }
 
         [Test]
-        public void TestGoblinDragonFight() //TestMax_ShouldBeXWhenXGreaterY()
+        public void TestGoblinDragonFight()
         {
             // AAA - pattern
             // Arrange
@@ -45,12 +46,32 @@ namespace MCTG.Test
             Assert.Zero(dmgGob);
             Assert.IsTrue(dmgDragon == 30);
         }
-        public void TestFireOrkWaterSpellFight() //TestMax_ShouldBeXWhenXGreaterY()
+
+        [Test]
+        public void TestOrkWaterSpellFight()
         {
             // AAA - pattern
             // Arrange
             ICard testCard1, testCard2;
             testCard1 = new OrkCard(20.0);
+            testCard2 = new WaterSpellCard(30.0);
+
+            // Act
+            double dmgFireOrk = testCard1.getDamage(testCard2);
+            double dmgWaterSpell = testCard2.getDamage(testCard1);
+
+            // Assert
+            Assert.IsTrue(dmgFireOrk == 40.0);
+            Assert.IsTrue(dmgWaterSpell == 15.0);
+        }
+
+        [Test]
+        public void TestFireGoblinWaterSpellFight()
+        {
+            // AAA - pattern
+            // Arrange
+            ICard testCard1, testCard2;
+            testCard1 = new FireGoblinCard(20.0);
             testCard2 = new WaterSpellCard(30.0);
 
             // Act
