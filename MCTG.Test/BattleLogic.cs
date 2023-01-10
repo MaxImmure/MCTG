@@ -1,11 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using MCTG.BL;
-using MCTG.DAL;
-using MCTG.Models;
+﻿using MCTG.BL;
 using MCTG.Models.Cards.MonsterCards;
 using MCTG.Models.Cards.SpellCards;
 using MCTG.Models.Cards;
@@ -15,7 +8,7 @@ namespace MCTG.Test
     internal class BattleLogic
     {
 
-        private Dictionary<string, ICard> _cards;
+        private Dictionary<string, ICard> _cards; //ToDo remove or implement
 
         [SetUp]
         public void Setup()

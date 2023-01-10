@@ -1,26 +1,15 @@
 ﻿using MCTG.Models.Cards.SpellCards;
-using MCTG.Models.Cards;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Xml.Linq;
 using MCTG.Models.Cards.MonsterCards;
+using MCTG.Models.Cards;
 
 namespace MCTG.Test
 {
     internal class CardFactory
     {
-        IEnumerable<CardType> cardTypes;
-        IEnumerable<ElementType> elementType;
 
         [SetUp]
         public void Setup()
-        {
-            cardTypes = Enum.GetValues(typeof(CardType)).Cast<CardType>().ToList();
-            elementType = Enum.GetValues(typeof(ElementType)).Cast<ElementType>().ToList();
-        }
+        { }
 
         [Test]
         public void TestGetEmptyCard()
@@ -94,7 +83,6 @@ namespace MCTG.Test
 
             Assert.IsInstanceOf<KnightCard>(knight);
         }
-
 
         [Test]
         public void TestGetKrakenCard()
