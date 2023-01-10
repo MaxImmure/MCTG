@@ -1,7 +1,7 @@
 ﻿
 namespace MCTG.Models.HTTP.Endpoints
 {
-    public class PackagesEndpoint : IHttpEndpoint 
+    public class TradingsEndpoint : IHttpEndpoint
     {
         //ToDo
         public void HandleRequest(HttpRequest rq, HttpResponse rs)

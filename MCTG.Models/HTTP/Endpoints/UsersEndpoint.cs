@@ -1,11 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
-using System.Xml;
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
 
 namespace MCTG.Models.HTTP.Endpoints
 {
@@ -20,7 +13,7 @@ namespace MCTG.Models.HTTP.Endpoints
                     CreateUser(rq, rs);
                     break;
                 case HttpMethod.GET:
-                    GetUsers(rq, rs);
+                    GetUser(rq, rs);
                     break;
                 case HttpMethod.PUT:
                     UpdatesUser(rq, rs);
@@ -31,6 +24,8 @@ namespace MCTG.Models.HTTP.Endpoints
         private void UpdatesUser(HttpRequest rq, HttpResponse rs)
         {
             throw new NotImplementedException(); //ToDo
+
+            //ToDo Admin or matching User
 
             try
             {
@@ -79,14 +74,19 @@ namespace MCTG.Models.HTTP.Endpoints
             }*/
         }
 
-        private void GetUsers(HttpRequest rq, HttpResponse rs)
+        private void GetUser(HttpRequest rq, HttpResponse rs)
         {
             //ToDo BL
+            //ToDo Admin or matching User
+            var user = new User(); //ToDo
+            //if(admin || user.name == matching)
+            //else 
+
             var users = new List<User>();
             users.Add(new User(Guid.NewGuid(), "Rudi Ratlos", "1234"));
             users.Add(new User(Guid.NewGuid(), "Susi Sorglos", "0000"));
 
-            rs.Content = JsonConvert.SerializeObject(users);
+            rs.Content = JsonConvert.SerializeObject(user);
             rs.ContentType = "application/json";
             rs.ResponseCode = 200;
             rs.ResponseText = "OK";
