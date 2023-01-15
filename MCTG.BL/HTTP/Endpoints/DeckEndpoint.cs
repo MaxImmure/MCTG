@@ -34,8 +34,28 @@ namespace MCTG.BL.HTTP.Endpoints
         {
             try
             {
+                var token = rq.headers["Authorization"].Split(" ")[1];
+                var userId = userRepository.GetIdFromUsername(token.Split('-')[0]);
+                var user = userRepository.GetById(userId);
 
-                //ToDo
+                if (user == null)
+                    throw new InvalidAccessTokenException();
+
+                var splitted = rq.Content.Substring(1, rq.Content.Length - 2).Split(',');
+
+                List<ICard> cards = new();
+                foreach (var card in splitted)
+                {
+                    var c = card.Trim().Trim('\"');
+                    cards.Add(cardRepository.GetById(new Guid(c)) ?? throw new CardBelongsToAnotherUserException());
+                }
+
+                if(cards.Count != 4) throw new IndexOutOfRangeException();
+                user.Deck = new ICard[]
+                {
+                    cards[0],cards[1],cards[2],cards[3]
+                };
+                userRepository.AddDeck(user);
 
                 rs.ResponseCode = 200;
                 rs.ResponseText = "The deck has been successfully configured";
@@ -67,23 +87,24 @@ namespace MCTG.BL.HTTP.Endpoints
 
                 if (user == null) 
                     throw new InvalidAccessTokenException();
+                user.Deck = userRepository.GetDeck(user);
 
-                var deck = userRepository.GetDeckById(user.Guid);
-                if (rq.QueryParams["format"].Equals("plain"))
+                if (rq.QueryParams.Keys.Contains("format") && rq.QueryParams["format"].Equals("plain"))
                 {
                     rs.ContentType = "text/plain";
-                    rs.Content = deck.ToString();
+                    rs.Content = string.Join(";",
+                        user.Deck.Select(x => x.GetId() + "," + x.GetType()));
                 } 
                 else
                 {
                     rs.ContentType = "application/json";
-                    rs.Content = JsonConvert.SerializeObject(deck);
+                    rs.Content = JsonConvert.SerializeObject(user.Deck);
                 }
 
                 rs.ResponseText = "The deck has cards, the response contains these";
                 rs.ResponseCode = 200;
             }
-            catch (EmptyDeckException)
+            catch (Exception ex) when (ex is EmptyDeckException or IndexOutOfRangeException)
             {
                 rs.ResponseCode = 204;
                 rs.ResponseText = "The request was fine, but the deck doesn't have any cards";

@@ -25,7 +25,7 @@ namespace MCTG.BL.HTTP.Endpoints
 
         private void PurchasePackage(HttpRequest rq, HttpResponse rs)
         {
-            try //ToDo Update Coins, Delete Package, Update CardOwner
+            try 
             {
                 var token = rq.headers["Authorization"].Split(" ")[1];
                 var id = userRepository.GetIdFromUsername(token.Split("-")[0]);

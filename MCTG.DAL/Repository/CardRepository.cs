@@ -47,7 +47,7 @@ namespace MCTG.DAL.Repository
             NpgsqlCommand cmd = new(sql);
             cmd.Parameters.AddWithValue("id", id.ToString());
             var reader = _db.ExecuteQuery(cmd);
-            if (reader.Read())
+            while (reader.Read())
             {
                 ElementType etype;
                 CardType ctype;

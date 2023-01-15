@@ -11,21 +11,21 @@ using HttpMethod = MCTG.Models.HTTP.HttpMethod;
 
 namespace MCTG.BL.HTTP.Endpoints
 {
-    public class CardEndpoint: IHttpEndpoint
+    public class ScoreboardEndpoint: IHttpEndpoint
     {
-        private CardRepository cardRepository = new();
         private UserRepository userRepository = new();
+        private StatsRepository statsRepository = new();
         public void HandleRequest(HttpRequest rq, HttpResponse rs)
         {
             switch (rq.Method)
             {
                 case HttpMethod.GET:
-                    ListAllCard(rq,rs);
+                    ListScoreboard(rq,rs);
                     break;
             }
         }
 
-        private void ListAllCard(HttpRequest rq, HttpResponse rs)
+        private void ListScoreboard(HttpRequest rq, HttpResponse rs)
         {
             try
             {
@@ -36,20 +36,15 @@ namespace MCTG.BL.HTTP.Endpoints
                 if (user == null) throw new UserNotFoundException();
 
                 if (!token.Equals(user.Credentials.Username.ToLower() + "-mtcgToken")) throw new InvalidAccessTokenException();
-                
-                var cards = cardRepository.GetAllFromUserId(user.Guid);
+
+                var scoreboard = userRepository.GetScoreboard(); 
 
                 rs.ContentType = "application/json";
-                rs.Content = JsonConvert.SerializeObject(cards);
+                rs.Content = JsonConvert.SerializeObject(scoreboard);
                 rs.ResponseCode = 200;
-                rs.ResponseText = "The user has cards, the response contains these";
+                rs.ResponseText = "The scoreboard could be retrieved successfully.";
             }
-            catch (UserHasNoCardsException)
-            {
-                rs.ResponseCode = 204;
-                rs.ResponseText = "The request was fine, but the user doesn't have any cards";
-            }
-            catch (Exception ex) when (ex is InvalidAccessTokenException or UserNotFoundException or KeyNotFoundException)
+            catch (Exception ex) when (ex is InvalidAccessTokenException or UserNotFoundException)
             {
                 rs.ResponseCode = 401;
                 rs.ResponseText = "Access token is missing or invalid";

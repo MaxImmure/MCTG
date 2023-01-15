@@ -30,8 +30,8 @@ namespace MCTG.BL.HTTP.Endpoints
         {
             try
             {
-                var user = JsonConvert.DeserializeObject<User>(rq.Content);
-                if(!userRepository.ValidLogin(user)) throw new InvalidLoginCredentialsException();
+                var user = JsonConvert.DeserializeObject<LoginCredentials>(rq.Content);
+                if(userRepository.LoginUser(user) == null) throw new InvalidLoginCredentialsException();
 
                 rs.ResponseCode = 200;
                 rs.ResponseText = "User login successful";

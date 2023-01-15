@@ -7,31 +7,28 @@ using MCTG.Models;
 
 namespace MCTG.Models.Cards.SpellCards
 {
-    public abstract class SpellCard : ICard
+    public abstract class SpellCard : AbstractCard, ICard
     {
-        private double BaseDamage;
-        private Guid CardId;
-        private Guid OwnerId;
-        public virtual double DamageModifier(ICard opponentCard) { return 1; }
-        public void SetOwner(Guid owner) => OwnerId = owner;
+
+        public override double DamageModifier(ICard opponentCard) => 1;
 
         protected SpellCard(Guid cardId, Guid ownerId, double baseDamage)
         {
-            this.OwnerId = ownerId;
-            this.CardId = cardId;
-            this.BaseDamage = baseDamage;
+            OwnerId = ownerId;
+            CardId = cardId;
+            BaseDamage = baseDamage;
         }
 
-        public double GetDamage(ICard opponentCard)
+        public override double GetDamage(ICard opponentCard)
         {
             return BaseDamage * DamageModifier(opponentCard);
         }
 
-        public double GetBaseDamage() => BaseDamage;
+        public override double GetBaseDamage() => BaseDamage;
 
         public Guid GetId() => CardId;
         public Guid GetOwner() => OwnerId;
 
-        public abstract string ToSqlString();
+        public abstract override string ToSqlString();
     }
 }

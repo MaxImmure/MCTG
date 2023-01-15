@@ -8,18 +8,9 @@ namespace MCTG.Test
     internal class BattleLogic
     {
 
-        private Dictionary<string, ICard> _cards; //ToDo remove or implement
-
         [SetUp]
         public void Setup()
-        {
-            _cards = new Dictionary<string, ICard>();
-            int dmg = 30;
-            _cards.Add("empty", EmptyCard.Instance());
-            _cards.Add("firespell", new FireSpellCard(Guid.NewGuid(), Guid.Empty, dmg));
-            _cards.Add("regularspell", new RegularSpellCard(Guid.NewGuid(), Guid.Empty, dmg));
-            _cards.Add("waterspell", new WaterSpellCard(Guid.NewGuid(), Guid.Empty, dmg));
-        }
+        {}
 
         [Test]
         public void TestGoblinDragonFight()
@@ -85,8 +76,8 @@ namespace MCTG.Test
             FireTrollCard troll = new FireTrollCard(Guid.NewGuid(), Guid.Empty, 15);
 
             // Act
-            ICard fight1 = Battle.simulateCardFight(gob, troll),
-                fight2 = Battle.simulateCardFight(troll, gob);
+            ICard fight1 = Battle.SimulateCardFight(gob, troll),
+                fight2 = Battle.SimulateCardFight(troll, gob);
 
             // Assert
             Assert.That(troll, Is.EqualTo(fight1));
@@ -104,9 +95,9 @@ namespace MCTG.Test
 
             FireSpellCard fireSpell2 = new (Guid.NewGuid(), Guid.Empty, 90);
 
-            ICard fight1 = Battle.simulateCardFight(fireSpell, waterSpell),
-                fight2 = Battle.simulateCardFight(fireSpell1, waterSpell1),
-                fight3 = Battle.simulateCardFight(fireSpell2, waterSpell1);
+            ICard fight1 = Battle.SimulateCardFight(fireSpell, waterSpell),
+                fight2 = Battle.SimulateCardFight(fireSpell1, waterSpell1),
+                fight3 = Battle.SimulateCardFight(fireSpell2, waterSpell1);
 
             Assert.That(waterSpell, Is.EqualTo(fight1));
             Assert.That(EmptyCard.Instance(), Is.EqualTo(fight2));
@@ -123,10 +114,10 @@ namespace MCTG.Test
             WaterGoblinCard watergoblin = new(Guid.NewGuid(), Guid.Empty, 10);
             KnightCard knight = new(Guid.NewGuid(), Guid.Empty, 15);
 
-            ICard fight1 = Battle.simulateCardFight(fs, watergoblin),
-                fight2 = Battle.simulateCardFight(ws, watergoblin),
-                fight3 = Battle.simulateCardFight(rs, watergoblin),
-                fight4 = Battle.simulateCardFight(rs, knight);
+            ICard fight1 = Battle.SimulateCardFight(fs, watergoblin),
+                fight2 = Battle.SimulateCardFight(ws, watergoblin),
+                fight3 = Battle.SimulateCardFight(rs, watergoblin),
+                fight4 = Battle.SimulateCardFight(rs, knight);
 
             Assert.That(watergoblin, Is.EqualTo(fight1));
             Assert.That(EmptyCard.Instance(), Is.EqualTo(fight2));

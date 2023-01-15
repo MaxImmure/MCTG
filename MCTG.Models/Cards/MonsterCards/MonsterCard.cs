@@ -6,22 +6,18 @@ using System.Threading.Tasks;
 
 namespace MCTG.Models.Cards.MonsterCards
 {
-    public abstract class MonsterCard : ICard
+    public abstract class MonsterCard : AbstractCard, ICard
     {
-        public virtual double DamageModifier(ICard opponentCard) { return 1; }
+        public override double DamageModifier(ICard opponentCard) { return 1; }
         public void SetOwner(Guid owner) => OwnerId = owner;
 
-        public virtual double GetDamage(ICard opponentCard) { return BaseDamage * DamageModifier(opponentCard) * getDamageForSpecialities(opponentCard); }
-        public double GetBaseDamage() => BaseDamage;
-
-        private double BaseDamage;
-        protected Guid CardId;
-        protected Guid OwnerId;
+        public override double GetDamage(ICard opponentCard) { return BaseDamage * DamageModifier(opponentCard) * getDamageForSpecialities(opponentCard); }
+        public override double GetBaseDamage() => BaseDamage;
 
         public Guid GetId() => CardId;
         public Guid GetOwner() => OwnerId;
 
-        public abstract string ToSqlString();
+        public abstract override string ToSqlString();
 
         protected MonsterCard(Guid cardId, Guid ownerId,double baseDamage)
         {
