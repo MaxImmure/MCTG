@@ -1,0 +1,1 @@
+INSERT INTO public.admin(guid) VALUES ((SELECT u.guid FROM public."user" u INNER JOIN login_credentials lc ON u.guid=lc.guid WHERE username='admin'));

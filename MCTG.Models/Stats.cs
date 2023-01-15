@@ -3,15 +3,16 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace MTCG.Models
+namespace MCTG.Models
 {
-    public struct Stats
+    public record Stats
     {
+        public Guid PlayerId;
         public int elo = 100;
-        public int played { get { return wins + looeses; } }
+        public String username;
+        public int played { get { return wins + looeses + draws; } }
         public int wins = 0;
         public int looeses = 0;
-
-        public Stats() { }
+        public int draws = 0;
     }
 }

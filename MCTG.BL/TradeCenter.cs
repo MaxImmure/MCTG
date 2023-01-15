@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace MTCG.DAL
+namespace MCTG.BL
 {
     public class TradeCenter
     {

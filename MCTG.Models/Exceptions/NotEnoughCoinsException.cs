@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MTCG.Exceptions
+namespace MCTG.Models.Exceptions
 {
     public class NotEnoughCoinsException : ArgumentOutOfRangeException
     {
