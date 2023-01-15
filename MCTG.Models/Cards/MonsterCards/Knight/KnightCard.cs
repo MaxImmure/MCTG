@@ -8,6 +8,11 @@ namespace MCTG.Models.Cards.MonsterCards
 {
     public class KnightCard : MonsterCard
     {
+        public override string ToSqlString()
+        {
+            return "NaE;Monster;Knight";
+        }
+
         protected override double getDamageForSpecialities(ICard opponent)
         {
             return 1;
@@ -17,7 +22,7 @@ namespace MCTG.Models.Cards.MonsterCards
             return base.DamageModifier(opponentCard);
         }
 
-        public KnightCard(double baseDamage) : base(baseDamage)
+        public KnightCard(Guid cardId, Guid ownerId, double baseDamage) : base(cardId, ownerId, baseDamage)
         {
         }
     }

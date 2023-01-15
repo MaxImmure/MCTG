@@ -18,8 +18,13 @@ namespace MCTG.Models.Cards.MonsterCards
             return 1;
         }
 
-        protected WaterMonsterCard(double baseDamage) : base(baseDamage)
+        protected WaterMonsterCard(Guid cardId, Guid ownerId, double baseDamage) : base(cardId, ownerId, baseDamage)
         {
+        }
+
+        public override string ToSqlString()
+        {
+            return "Water;Monster;";
         }
     }
 }

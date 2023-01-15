@@ -17,8 +17,12 @@ namespace MCTG.Models.Cards.MonsterCards
             return 1;
         }
 
-        protected FireMonsterCard(double baseDamage) : base(baseDamage)
+        protected FireMonsterCard(Guid cardId, Guid ownerId, double baseDamage) : base(cardId, ownerId, baseDamage)
         {
+        }
+        public override string ToSqlString()
+        {
+            return "Fire;Monster;";
         }
     }
 }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace MCTG.Models.Cards.MonsterCards
 {
-    public class WaterWizzardCard : WaterMonsterCard
+    public class FireWizardCard : FireMonsterCard
     {
         protected override double getDamageForSpecialities(ICard opponent)
         {
@@ -17,8 +17,11 @@ namespace MCTG.Models.Cards.MonsterCards
             return base.DamageModifier(opponentCard);
         }
 
-        public WaterWizzardCard(double baseDamage) : base(baseDamage)
+        public FireWizardCard(Guid cardId, Guid ownerId, double baseDamage) : base(cardId, ownerId, baseDamage) { }
+
+        public override string ToSqlString()
         {
+            return base.ToSqlString() + "Wizard";
         }
     }
 }

@@ -18,8 +18,12 @@ namespace MCTG.Models.Cards.SpellCards
             return 1;
         }
 
-        public FireSpellCard(double baseDamage) : base(baseDamage)
+        public FireSpellCard(Guid cardId, Guid ownerId, double baseDamage) : base(cardId, ownerId, baseDamage)
+        { }
+
+        public override string ToSqlString()
         {
+            return "Fire;Spell;";
         }
     }
 }

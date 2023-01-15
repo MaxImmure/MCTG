@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MCTG.BL.Exceptions
+namespace MCTG.Models.Exceptions
 {
     public class NotEnoughPlayerJoinedException : ArgumentOutOfRangeException
     {

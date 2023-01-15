@@ -18,8 +18,12 @@ namespace MCTG.Models.Cards.SpellCards
             return 1;
         }
 
-        public RegularSpellCard(double baseDamage) : base(baseDamage)
+        public override string ToSqlString()
         {
+            return "Regular;Spell;";
         }
+
+        public RegularSpellCard(Guid id, Guid ownerId, double baseDamage) : base(id,ownerId, baseDamage)
+        { }
     }
 }

@@ -16,9 +16,9 @@ namespace MCTG.Test
             _cards = new Dictionary<string, ICard>();
             int dmg = 30;
             _cards.Add("empty", EmptyCard.Instance());
-            _cards.Add("firespell", new FireSpellCard(dmg));
-            _cards.Add("regularspell", new RegularSpellCard(dmg));
-            _cards.Add("waterspell", new WaterSpellCard(dmg));
+            _cards.Add("firespell", new FireSpellCard(Guid.NewGuid(), Guid.Empty, dmg));
+            _cards.Add("regularspell", new RegularSpellCard(Guid.NewGuid(), Guid.Empty, dmg));
+            _cards.Add("waterspell", new WaterSpellCard(Guid.NewGuid(), Guid.Empty, dmg));
         }
 
         [Test]
@@ -28,12 +28,12 @@ namespace MCTG.Test
             // Arrange
 
             ICard testCard1, testCard2;
-            testCard1 = new FireGoblinCard(20.0);
-            testCard2 = new DragonCard(30.0);
+            testCard1 = new FireGoblinCard(Guid.NewGuid(), Guid.Empty, 20.0);
+            testCard2 = new DragonCard(Guid.NewGuid(), Guid.Empty, 30.0);
 
             // Act
-            double dmgGob = testCard1.getDamage(testCard2);
-            double dmgDragon = testCard2.getDamage(testCard1);
+            double dmgGob = testCard1.GetDamage(testCard2);
+            double dmgDragon = testCard2.GetDamage(testCard1);
 
             // Assert
             Assert.Zero(dmgGob);
@@ -46,12 +46,12 @@ namespace MCTG.Test
             // AAA - pattern
             // Arrange
             ICard testCard1, testCard2;
-            testCard1 = new OrkCard(20.0);
-            testCard2 = new WaterSpellCard(30.0);
+            testCard1 = new OrkCard(Guid.NewGuid(), Guid.Empty, 20.0);
+            testCard2 = new WaterSpellCard(Guid.NewGuid(), Guid.Empty, 30.0);
 
             // Act
-            double dmgFireOrk = testCard1.getDamage(testCard2);
-            double dmgWaterSpell = testCard2.getDamage(testCard1);
+            double dmgFireOrk = testCard1.GetDamage(testCard2);
+            double dmgWaterSpell = testCard2.GetDamage(testCard1);
 
             // Assert
             Assert.IsTrue(dmgFireOrk == 40.0);
@@ -64,12 +64,12 @@ namespace MCTG.Test
             // AAA - pattern
             // Arrange
             ICard testCard1, testCard2;
-            testCard1 = new FireGoblinCard(20.0);
-            testCard2 = new WaterSpellCard(30.0);
+            testCard1 = new FireGoblinCard(Guid.NewGuid(), Guid.Empty, 20.0);
+            testCard2 = new WaterSpellCard(Guid.NewGuid(), Guid.Empty, 30.0);
 
             // Act
-            double dmgFireOrk = testCard1.getDamage(testCard2);
-            double dmgWaterSpell = testCard2.getDamage(testCard1);
+            double dmgFireOrk = testCard1.GetDamage(testCard2);
+            double dmgWaterSpell = testCard2.GetDamage(testCard1);
 
             // Assert
             Assert.IsTrue(dmgFireOrk == 10.0);
@@ -81,8 +81,8 @@ namespace MCTG.Test
         {
             //AAA
             // Arrange
-            WaterGoblinCard gob = new WaterGoblinCard(10);
-            FireTrollCard troll = new FireTrollCard(15);
+            WaterGoblinCard gob = new WaterGoblinCard(Guid.NewGuid(), Guid.Empty, 10);
+            FireTrollCard troll = new FireTrollCard(Guid.NewGuid(), Guid.Empty, 15);
 
             // Act
             ICard fight1 = Battle.simulateCardFight(gob, troll),
@@ -96,13 +96,13 @@ namespace MCTG.Test
         [Test]
         public void TestSpellFightBattle()
         {
-            FireSpellCard fireSpell = new(10);
-            WaterSpellCard waterSpell = new(20);
+            FireSpellCard fireSpell = new(Guid.NewGuid(), Guid.Empty, 10);
+            WaterSpellCard waterSpell = new(Guid.NewGuid(), Guid.Empty, 20);
 
-            FireSpellCard fireSpell1 = new (20);
-            WaterSpellCard waterSpell1 = new(5);
+            FireSpellCard fireSpell1 = new (Guid.NewGuid(), Guid.Empty, 20);
+            WaterSpellCard waterSpell1 = new(Guid.NewGuid(), Guid.Empty, 5);
 
-            FireSpellCard fireSpell2 = new (90);
+            FireSpellCard fireSpell2 = new (Guid.NewGuid(), Guid.Empty, 90);
 
             ICard fight1 = Battle.simulateCardFight(fireSpell, waterSpell),
                 fight2 = Battle.simulateCardFight(fireSpell1, waterSpell1),
@@ -116,12 +116,12 @@ namespace MCTG.Test
         [Test]
         public void TestMixedBattle()
         {
-            FireSpellCard fs = new(10);
-            WaterSpellCard ws = new(10);
-            RegularSpellCard rs = new(10);
+            FireSpellCard fs = new(Guid.NewGuid(), Guid.Empty, 10);
+            WaterSpellCard ws = new(Guid.NewGuid(), Guid.Empty, 10);
+            RegularSpellCard rs = new(Guid.NewGuid(), Guid.Empty, 10);
 
-            WaterGoblinCard watergoblin = new(10);
-            KnightCard knight = new(15);
+            WaterGoblinCard watergoblin = new(Guid.NewGuid(), Guid.Empty, 10);
+            KnightCard knight = new(Guid.NewGuid(), Guid.Empty, 15);
 
             ICard fight1 = Battle.simulateCardFight(fs, watergoblin),
                 fight2 = Battle.simulateCardFight(ws, watergoblin),

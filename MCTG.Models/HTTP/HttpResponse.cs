@@ -39,7 +39,7 @@ namespace MCTG.Models.HTTP
             writer.WriteLine($"HTTP/1.1 {ResponseCode} {ResponseText}\n");
 
             if (Content != null && Content.Length > 0)
-                Headers.Add("Content-Length", Content.Length.ToString());
+                Headers["Content-Length"] = Content.Length.ToString();
 
             Headers.ToList().ForEach(kvp => writer.WriteLine($"{kvp.Key}: {kvp.Value}"));                
             

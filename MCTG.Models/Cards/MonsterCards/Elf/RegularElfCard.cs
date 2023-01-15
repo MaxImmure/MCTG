@@ -17,8 +17,12 @@ namespace MCTG.Models.Cards.MonsterCards
             return base.DamageModifier(opponentCard);
         }
 
-        public RegularElfCard(double baseDamage) : base(baseDamage)
+        public RegularElfCard(Guid cardId, Guid ownerId, double baseDamage) : base(cardId, ownerId, baseDamage)
         {
+        }
+        public override string ToSqlString()
+        {
+            return base.ToSqlString() + "Elf";
         }
     }
 }

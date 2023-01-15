@@ -17,8 +17,13 @@ namespace MCTG.Models.Cards.MonsterCards
             return 1;
         }
 
-        protected RegularMonsterCard(double baseDamage) : base(baseDamage)
+        protected RegularMonsterCard(Guid cardId, Guid ownerId, double baseDamage) : base(cardId, ownerId,baseDamage)
         {
+        }
+
+        public override string ToSqlString()
+        {
+            return "Regular;Monster;";
         }
     }
 }

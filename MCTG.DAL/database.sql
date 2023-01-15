@@ -2,7 +2,7 @@ CREATE DATABASE mctg_db;
 --USE mctg_db;
 --for postgresql: \c mctg_db
 
-CREATE TABLE IF NOT EXISTS users (
+CREATE TABLE IF NOT EXISTS user (
     guid        char(36) PRIMARY KEY,
     username    varchar(40) NOT NULL UNIQUE,
     u_password  varchar(64) NOT NULL,
@@ -10,6 +10,12 @@ CREATE TABLE IF NOT EXISTS users (
 	u_description varchar(128),
 	elo			integer NOT NULL,
 	CHECK(coins >= 0)
+);
+
+create table IF NOT EXISTS admins
+(
+    guid	char(36) PRIMARY KEY,
+	CONSTRAINT fk_deck_user FOREIGN KEY(guid) REFERENCES users(guid) 
 );
 
 CREATE TABLE IF NOT EXISTS decks (
@@ -102,3 +108,5 @@ CREATE TABLE IF NOT EXISTS selling_offer(
 	price 	integer NOT NULL,
 	CHECK(price >= 0)
 );
+
+SELECT * FROM USERs u INNER JOIN admins a ON u.guid = a.fguid;

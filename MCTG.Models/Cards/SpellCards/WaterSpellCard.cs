@@ -9,7 +9,7 @@ namespace MCTG.Models.Cards.SpellCards
 {
     public class WaterSpellCard : SpellCard
     {
-        public WaterSpellCard(double baseDamage) : base(baseDamage)
+        public WaterSpellCard(Guid cardId, Guid ownerId, double baseDamage) : base(cardId, ownerId, baseDamage)
         {
         }
 
@@ -21,6 +21,11 @@ namespace MCTG.Models.Cards.SpellCards
             if (opponentCard is RegularSpellCard || opponentCard is RegularMonsterCard) return 0.5;
             if (opponentCard is FireSpellCard || opponentCard is FireMonsterCard) return 2;
             return 1;
+        }
+
+        public override string ToSqlString()
+        {
+            return "Water;Spell;";
         }
     }
 }

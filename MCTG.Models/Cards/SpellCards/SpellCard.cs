@@ -9,16 +9,29 @@ namespace MCTG.Models.Cards.SpellCards
 {
     public abstract class SpellCard : ICard
     {
-        public double BaseDamage { get; private set; }
+        private double BaseDamage;
+        private Guid CardId;
+        private Guid OwnerId;
         public virtual double DamageModifier(ICard opponentCard) { return 1; }
+        public void SetOwner(Guid owner) => OwnerId = owner;
 
-        public SpellCard(double baseDamage)
+        protected SpellCard(Guid cardId, Guid ownerId, double baseDamage)
         {
+            this.OwnerId = ownerId;
+            this.CardId = cardId;
             this.BaseDamage = baseDamage;
         }
-        public double getDamage(ICard opponentCard)
+
+        public double GetDamage(ICard opponentCard)
         {
             return BaseDamage * DamageModifier(opponentCard);
         }
+
+        public double GetBaseDamage() => BaseDamage;
+
+        public Guid GetId() => CardId;
+        public Guid GetOwner() => OwnerId;
+
+        public abstract string ToSqlString();
     }
 }

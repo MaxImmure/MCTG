@@ -10,9 +10,9 @@ namespace MCTG.Models.Cards.MonsterCards
     {
     protected override double getDamageForSpecialities(ICard opponent)
         {
-            if (opponent is FireWizzardCard
-                || opponent is WaterWizzardCard
-                || opponent is RegularWizzardCard)
+            if (opponent is FireWizardCard
+                || opponent is WaterWizardCard
+                || opponent is RegularWizardCard)
                 return 0;
             return 1;
         }
@@ -21,8 +21,13 @@ namespace MCTG.Models.Cards.MonsterCards
             return base.DamageModifier(opponentCard);
         }
 
-        public OrkCard(double baseDamage) : base(baseDamage)
+        public OrkCard(Guid cardId, Guid ownerId, double baseDamage) : base(cardId, ownerId, baseDamage)
         {
+        }
+
+        public override string ToSqlString()
+        {
+            return "NaE;Monster;Ork";
         }
     }
 }

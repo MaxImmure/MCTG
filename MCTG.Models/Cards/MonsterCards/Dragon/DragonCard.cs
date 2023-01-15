@@ -19,8 +19,13 @@ namespace MCTG.Models.Cards.MonsterCards
             return base.DamageModifier(opponentCard);
         }
 
-        public DragonCard(double baseDamage) : base(baseDamage)
+        public DragonCard(Guid cardId, Guid ownerId, double baseDamage) : base(cardId, ownerId, baseDamage)
         {
+        }
+
+        public override string ToSqlString()
+        {
+            return "NaE;Monster;Dragon";
         }
     }
 }

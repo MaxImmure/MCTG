@@ -1,13 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net.Security;
-using System.Text;
-using System.Threading.Tasks;
-using System.Net;
-using MCTG.BL;
+﻿using System.Net;
 using MCTG.BL.HTTP;
-using MCTG.Models.HTTP.Endpoints;
+using MCTG.BL.HTTP.Endpoints;
 
 namespace MCTG
 {
@@ -20,9 +13,9 @@ namespace MCTG
             server.RegisterEndpoint("/sessions", new SessionsEndpoint());
             server.RegisterEndpoint("/tradings", new TradingsEndpoint());
             server.RegisterEndpoint("/packages", new PackagesEndpoint());
-            //server.RegisterEndpoint("/transactions/packages", new Endpoint());
-            //server.RegisterEndpoint("/cards", new Endpoint());
-            //server.RegisterEndpoint("/deck", new Endpoint());
+            server.RegisterEndpoint("/transactions/packages", new TransactionEndpoint());
+            server.RegisterEndpoint("/cards", new CardEndpoint());
+            server.RegisterEndpoint("/deck", new DeckEndpoint());
             //server.RegisterEndpoint("/stats", new Endpoint());
             //server.RegisterEndpoint("/scoreboard", new Endpoint());
             //server.RegisterEndpoint("/battles", new Endpoint());

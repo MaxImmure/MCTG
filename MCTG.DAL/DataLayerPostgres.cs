@@ -8,7 +8,7 @@ using MCTG.BL;
 using MCTG.Models;
 using Npgsql;
 
-namespace MCTG.DAL
+namespace MCTG.DAL //ToDo Remove
 {
     public class DataLayerPostgres
     {

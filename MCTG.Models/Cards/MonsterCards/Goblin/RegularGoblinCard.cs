@@ -19,8 +19,13 @@ namespace MCTG.Models.Cards.MonsterCards
             return base.DamageModifier(opponentCard);
         }
 
-        public RegularGoblinCard(double baseDamage) : base(baseDamage)
+        public RegularGoblinCard(Guid cardId, Guid ownerId, double baseDamage) : base(cardId, ownerId, baseDamage)
         {
+        }
+
+        public override string ToSqlString()
+        {
+            return base.ToSqlString() + "Goblin";
         }
     }
 }
